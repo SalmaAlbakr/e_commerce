@@ -13,7 +13,3 @@ class CategoryProductRepo {
 
   }
 }
-
-void main() {
-  CategoryProductRepo().getCategoryProduct();
-}
