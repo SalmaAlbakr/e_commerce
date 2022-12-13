@@ -1,6 +1,3 @@
-
-
-
 class CategoryProductModel {
   CategoryProductModel({
     required this.id,
@@ -18,9 +15,9 @@ class CategoryProductModel {
     image: json["image"],
   );
 
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "image": image,
-  };
+//   Map<String, dynamic> toJson() => {
+//     "id": id,
+//     "name": name,
+//     "image": image,
+//   };
 }

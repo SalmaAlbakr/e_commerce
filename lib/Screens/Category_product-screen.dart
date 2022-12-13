@@ -1,5 +1,5 @@
-import 'package:e_commerce/OneProduct/model.dart';
-import 'package:e_commerce/OneProduct/reposity.dart';
+import 'package:e_commerce/category_product_test/model.dart';
+import 'package:e_commerce/category_product_test/reposity.dart';
 import 'package:e_commerce/model/categoryProduct.dart';
 import 'package:e_commerce/repositry/categoryProduct_repositry.dart';
 import 'package:flutter/material.dart';
@@ -30,9 +30,9 @@ class CategoryProductScreen extends StatelessWidget {
         ),
       ),
       body:
-        FutureBuilder<List<CategoryProductTest>>(
-          future: ProductRepoTest().getTestProduct(),
-            builder: (BuildContext context ,AsyncSnapshot<List<CategoryProductTest>> snapshot){
+        FutureBuilder<List<CategoryProductModel>>(
+          future: CategoryProductRepo().getCategoryProduct(),
+            builder: (BuildContext context ,AsyncSnapshot<List<CategoryProductModel>> snapshot){
               if (snapshot.connectionState == ConnectionState.done) {
                 final ListCat = snapshot.data;
                 return GridView.builder(

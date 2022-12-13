@@ -28,7 +28,7 @@ void main() {
       BlocProvider(create: (context) => OneProductCubit())
 
     ],
-    child: MaterialApp(home: Cart()),
+    child: MaterialApp(home: HomeScreen()),
   ));
 }
 

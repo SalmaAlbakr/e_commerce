@@ -15,9 +15,9 @@ class _CartState extends State<Cart> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: ListView(
+            //crossAxisAlignment: CrossAxisAlignment.start,
+            //mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               // title
               Container(
@@ -39,203 +39,214 @@ class _CartState extends State<Cart> {
                 ),
               ),
 
-              // fist product
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 110,
-                  padding: EdgeInsets.all(10),
-                  decoration:
+              // product
+              Container(
+                height: 300,
+                child: ListView.builder(
+                  itemCount: 5,
+                    itemBuilder: (BuildContext context ,int item ){
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 110,
+                      padding: EdgeInsets.all(10),
+                      decoration:
                       BoxDecoration(border: Border.all(color: Colors.grey)),
-                  child: Row(
-                    children: [
-                      Image.asset("assets/images/image Product (6).png"),
-                      Column(
+                      child: Row(
                         children: [
-                          Row(
+                          Image.asset("assets/images/image Product (6).png"),
+                          Column(
                             children: [
-                              Text(
-                                "Nike Air Zoom Pegasus \n 36 Miami",
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                              Row(
+                                children: [
+                                  Text(
+                                    "Nike Air Zoom Pegasus \n 36 Miami",
+                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    width: 40,
+                                  ),
+                                  Icon(Icons.favorite_border),
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  Icon(Icons.delete)
+                                ],
                               ),
                               SizedBox(
-                                width: 40,
+                                height: 20,
                               ),
-                              Icon(Icons.favorite_border),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(Icons.delete)
-                            ],
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "\$299,43",
-                                style: TextStyle(color: MyColor.blue),
-                              ),
-                              SizedBox(
-                                width: 50,
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: MyColor.icon)),
-                                height: 30,
-                                width: 50,
-                                child: ElevatedButton(
-                                    style: ButtonStyle(
-                                        backgroundColor:
+                              Row(
+                                children: [
+                                  Text(
+                                    "\$299,43",
+                                    style: TextStyle(color: MyColor.blue),
+                                  ),
+                                  SizedBox(
+                                    width: 50,
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        border: Border.all(color: MyColor.icon)),
+                                    height: 30,
+                                    width: 50,
+                                    child: ElevatedButton(
+                                        style: ButtonStyle(
+                                            backgroundColor:
                                             MaterialStateProperty.all(
                                                 Colors.white)),
-                                    onPressed: () {},
-                                    child: Icon(
-                                      Icons.add,
-                                      color: Colors.black,
-                                    )),
-                              ),
-                              Container(
-                                height: 30,
-                                width: 30,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text("1"),
-                                  ],
-                                ),
-                                decoration: BoxDecoration(
-                                    color: MyColor.icon,
-                                    border: Border.all(color: Colors.grey)),
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                  color: MyColor.icon,
-                                )),
-                                height: 30,
-                                width: 50,
-                                child: ElevatedButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
+                                        onPressed: () {},
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.black,
+                                        )),
+                                  ),
+                                  Container(
+                                    height: 30,
+                                    width: 30,
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Text("1"),
+                                      ],
+                                    ),
+                                    decoration: BoxDecoration(
+                                        color: MyColor.icon,
+                                        border: Border.all(color: Colors.grey)),
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: MyColor.icon,
+                                        )),
+                                    height: 30,
+                                    width: 50,
+                                    child: ElevatedButton(
+                                        style: ButtonStyle(
+                                          backgroundColor:
                                           MaterialStateProperty.all(
                                               Colors.white),
-                                    ),
-                                    onPressed: () {},
-                                    child: Icon(
-                                      Icons.remove,
-                                      color: Colors.black,
-                                    )),
-                              ),
+                                        ),
+                                        onPressed: () {},
+                                        child: Icon(
+                                          Icons.remove,
+                                          color: Colors.black,
+                                        )),
+                                  ),
+                                ],
+                              )
                             ],
-                          )
+                          ),
                         ],
                       ),
-                    ],
-                  ),
-                ),
+                    ),
+                  );
+                } ),
               ),
 
-              // second product
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  height: 110,
-                  padding: EdgeInsets.all(10),
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.grey)),
-                  child: Row(
-                    children: [
-                      Image.asset("assets/images/image Product (7).png"),
-                      Column(
-                        children: [
-                          Row(
-                            children: [
-                              Text(
-                                "Nike Air Zoom Pegasus \n 36 Miami",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              SizedBox(
-                                width: 40,
-                              ),
-                              Icon(Icons.favorite_border),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Icon(Icons.delete)
-                            ],
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                "\$299,43",
-                                style: TextStyle(color: MyColor.blue),
-                              ),
-                              SizedBox(
-                                width: 50,
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: MyColor.icon)),
-                                height: 30,
-                                width: 50,
-                                child: ElevatedButton(
-                                    style: ButtonStyle(
-                                        backgroundColor:
-                                            MaterialStateProperty.all(
-                                                Colors.white)),
-                                    onPressed: () {},
-                                    child: Icon(
-                                      Icons.add,
-                                      color: Colors.black,
-                                    )),
-                              ),
-                              Container(
-                                height: 30,
-                                width: 30,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text("1"),
-                                  ],
-                                ),
-                                decoration: BoxDecoration(
-                                    color: MyColor.icon,
-                                    border: Border.all(color: Colors.grey)),
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                    border: Border.all(
-                                  color: MyColor.icon,
-                                )),
-                                height: 30,
-                                width: 50,
-                                child: ElevatedButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all(
-                                              Colors.white),
-                                    ),
-                                    onPressed: () {},
-                                    child: Icon(
-                                      Icons.remove,
-                                      color: Colors.black,
-                                    )),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+             // fist product
+
+
+              //second product
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: Container(
+              //     height: 110,
+              //     padding: EdgeInsets.all(10),
+              //     decoration:
+              //         BoxDecoration(border: Border.all(color: Colors.grey)),
+              //     child: Row(
+              //       children: [
+              //         Image.asset("assets/images/image Product (7).png"),
+              //         Column(
+              //           children: [
+              //             Row(
+              //               children: [
+              //                 Text(
+              //                   "Nike Air Zoom Pegasus \n 36 Miami",
+              //                   style: TextStyle(fontWeight: FontWeight.bold),
+              //                 ),
+              //                 SizedBox(
+              //                   width: 40,
+              //                 ),
+              //                 Icon(Icons.favorite_border),
+              //                 SizedBox(
+              //                   width: 10,
+              //                 ),
+              //                 Icon(Icons.delete)
+              //               ],
+              //             ),
+              //             SizedBox(
+              //               height: 20,
+              //             ),
+              //             Row(
+              //               children: [
+              //                 Text(
+              //                   "\$299,43",
+              //                   style: TextStyle(color: MyColor.blue),
+              //                 ),
+              //                 SizedBox(
+              //                   width: 50,
+              //                 ),
+              //                 Container(
+              //                   decoration: BoxDecoration(
+              //                       border: Border.all(color: MyColor.icon)),
+              //                   height: 30,
+              //                   width: 50,
+              //                   child: ElevatedButton(
+              //                       style: ButtonStyle(
+              //                           backgroundColor:
+              //                               MaterialStateProperty.all(
+              //                                   Colors.white)),
+              //                       onPressed: () {},
+              //                       child: Icon(
+              //                         Icons.add,
+              //                         color: Colors.black,
+              //                       )),
+              //                 ),
+              //                 Container(
+              //                   height: 30,
+              //                   width: 30,
+              //                   child: Column(
+              //                     mainAxisAlignment: MainAxisAlignment.center,
+              //                     children: [
+              //                       Text("1"),
+              //                     ],
+              //                   ),
+              //                   decoration: BoxDecoration(
+              //                       color: MyColor.icon,
+              //                       border: Border.all(color: Colors.grey)),
+              //                 ),
+              //                 Container(
+              //                   decoration: BoxDecoration(
+              //                       border: Border.all(
+              //                     color: MyColor.icon,
+              //                   )),
+              //                   height: 30,
+              //                   width: 50,
+              //                   child: ElevatedButton(
+              //                       style: ButtonStyle(
+              //                         backgroundColor:
+              //                             MaterialStateProperty.all(
+              //                                 Colors.white),
+              //                       ),
+              //                       onPressed: () {},
+              //                       child: Icon(
+              //                         Icons.remove,
+              //                         color: Colors.black,
+              //                       )),
+              //                 ),
+              //               ],
+              //             )
+              //           ],
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
 
               // coupon code input
+              SizedBox(height: 20,),
               Container(
                 decoration:
                     BoxDecoration(border: Border.all(color: Colors.grey)),
@@ -256,7 +267,7 @@ class _CartState extends State<Cart> {
                   ],
                 ),
               ),
-
+              SizedBox(height: 20,),
               // cheek
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -315,10 +326,10 @@ class _CartState extends State<Cart> {
                 ),
               ),
 
-              // check butoon
+              // check button
               Container(
                 width: MediaQuery.of(context).size.width,
-                  child: ElevatedButton(onPressed: () {}, child: Text("Check Out"),)),
+                  child: ElevatedButton(onPressed: () {}, child: Text("Check Out"),),),
             ],
           ),
         ),

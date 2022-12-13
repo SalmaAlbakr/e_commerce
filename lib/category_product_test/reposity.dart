@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:e_commerce/OneProduct/model.dart';
+import 'package:e_commerce/category_product_test/model.dart';
+
 
 class ProductRepoTest {
   Future<List<CategoryProductTest>> getTestProduct () async {

@@ -657,7 +657,7 @@ class _ProductScreenState extends State<ProductScreen> {
           }
           )
         // FutureBuilder<singleProduct>(
-        //     future: OneProduct().getProduct(idNum.toString()),
+        //     future: category_product_test().getProduct(idNum.toString()),
         //     builder: (context, snapshot) {
         //       final myData = snapshot.data;
         //       if (snapshot.connectionState == ConnectionState.done) {
