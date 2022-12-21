@@ -1,14 +1,13 @@
 import 'package:e_commerce/Screens/product_screen.dart';
+import 'package:e_commerce/cubed/category_cubit/category_cubit.dart';
+import 'package:e_commerce/cubed/product_cubit/product_cubit.dart';
+import 'package:e_commerce/repository/product_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce/Screens/Category_product-screen.dart';
 import 'package:e_commerce/Screens/login_screen.dart';
-import 'package:e_commerce/cubed/categrogcubed/category_cubit.dart';
-import 'package:e_commerce/model/productModel.dart';
-import 'package:e_commerce/repositry/ProductRepository.dart';
-import 'package:e_commerce/repositry/categoryRepositry.dart';
-import 'package:e_commerce/model/categoryRepoModel.dart';
-import 'package:e_commerce/thems/colors.dart';
+import 'package:e_commerce/model/product_model.dart';
+import 'package:e_commerce/themes/colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -29,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   initState() {
     super.initState();
     context.read<CategoryCubit>().getAllCategories();
+    context.read<ProductCubit>().getAllHomeProducts();
 
     final subscription = Connectivity()
         .onConnectivityChanged
@@ -465,85 +465,156 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
 
                   // grid product image
-                  FutureBuilder<List<ProductModel>>(
-                    future: ProductRepository().getAllProduct(),
-                    builder: (BuildContext context,
-                        AsyncSnapshot<List<ProductModel>> snapshot) {
-                      final ProductList = snapshot.data;
-
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return CircularProgressIndicator();
-                      }
-                      if (snapshot.connectionState == ConnectionState.done) {
-                        return GridView.builder(
-                          itemCount: ProductList!.length,
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2),
-                          itemBuilder: (BuildContext context, int index) {
-                            return GestureDetector(
-                              onTap: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        ProductScreen(idNum: ProductList[index].id,),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                margin: EdgeInsets.all(1),
-                                decoration: BoxDecoration(
-                                    border: Border.all(color: MyColor.gray)),
-                                child: Column(
-                                  children: [
-                                    // product image
-                                    Container(
-                                      width: 100,
-                                      height: 100,
-                                      child: Image.network(
-                                          ProductList[index].thumbnail
-
-                                          // "assets/images/image Product (6).png",
-                                          ),
-                                    ),
-
-                                    Text(ProductList[index].title
-                                        // "name"
-                                        // ProductList![index].title
-                                        ),
-                                    // Container(
-                                    //   child: RatingBar.builder(
-                                    //       itemSize: 20,
-                                    //       itemBuilder: (context, _) => Icon(
-                                    //             Icons.star,
-                                    //             size: 1,
-                                    //             color: Colors.amber,
-                                    //           ),
-                                    //       onRatingUpdate: (rating) {}),
-                                    // ),
-
-                                    Text(ProductList[index].price.toString()
-                                        //"price"
-                                        ),
-                                    Text(
-                                        "Rating: ${ProductList[index].rating.toString()} "),
-
-                                    Text(
-                                        "discount: ${ProductList[index].discountPercentage.toString()} % "
-                                        //"offer"
-                                        ),
-                                  ],
-                                ),
+                  BlocBuilder<ProductCubit ,ProductState >
+                    (builder: (context , state){
+                    if (state is ProductSuccesses){
+                    return GridView.builder(
+                      itemCount: state.productList.length,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      gridDelegate:
+                      SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2),
+                      itemBuilder: (BuildContext context, int index) {
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    ProductScreen(idNum: state.productList[index].id,),
                               ),
                             );
                           },
+                          child: Container(
+                            margin: EdgeInsets.all(1),
+                            decoration: BoxDecoration(
+                                border: Border.all(color: MyColor.gray)),
+                            child: Column(
+                              children: [
+                                // product image
+                                Container(
+                                  width: 100,
+                                  height: 100,
+                                  child: Image.network(
+                                      state.productList[index].thumbnail
+
+                                    // "assets/images/image Product (6).png",
+                                  ),
+                                ),
+
+                                Text(state.productList[index].title
+                                  // "name"
+                                  // ProductList![index].title
+                                ),
+                                // Container(
+                                //   child: RatingBar.builder(
+                                //       itemSize: 20,
+                                //       itemBuilder: (context, _) => Icon(
+                                //             Icons.star,
+                                //             size: 1,
+                                //             color: Colors.amber,
+                                //           ),
+                                //       onRatingUpdate: (rating) {}),
+                                // ),
+
+                                Text(state.productList[index].price.toString()
+                                  //"price"
+                                ),
+                                Text(
+                                    "Rating: ${state.productList[index].rating.toString()} "),
+
+                                Text(
+                                    "discount: ${state.productList[index].discountPercentage.toString()} % "
+                                  //"offer"
+                                ),
+                              ],
+                            ),
+                          ),
                         );
-                      }
-                      return CircularProgressIndicator();
-                    },
+                      },
+                    );}
+                    else return CircularProgressIndicator();
+                  }
                   ),
+                  // FutureBuilder<List<ProductModel>>(
+                  //   future: ProductRepository().getAllProduct(),
+                  //   builder: (BuildContext context,
+                  //       AsyncSnapshot<List<ProductModel>> snapshot) {
+                  //     final ProductList = snapshot.data;
+                  //
+                  //     if (snapshot.connectionState == ConnectionState.waiting) {
+                  //       return CircularProgressIndicator();
+                  //     }
+                  //     if (snapshot.connectionState == ConnectionState.done) {
+                  //       return GridView.builder(
+                  //         itemCount: ProductList!.length,
+                  //         shrinkWrap: true,
+                  //         physics: NeverScrollableScrollPhysics(),
+                  //         gridDelegate:
+                  //             SliverGridDelegateWithFixedCrossAxisCount(
+                  //                 crossAxisCount: 2),
+                  //         itemBuilder: (BuildContext context, int index) {
+                  //           return GestureDetector(
+                  //             onTap: () {
+                  //               Navigator.of(context).push(
+                  //                 MaterialPageRoute(
+                  //                   builder: (context) =>
+                  //                       ProductScreen(idNum: ProductList[index].id,),
+                  //                 ),
+                  //               );
+                  //             },
+                  //             child: Container(
+                  //               margin: EdgeInsets.all(1),
+                  //               decoration: BoxDecoration(
+                  //                   border: Border.all(color: MyColor.gray)),
+                  //               child: Column(
+                  //                 children: [
+                  //                   // product image
+                  //                   Container(
+                  //                     width: 100,
+                  //                     height: 100,
+                  //                     child: Image.network(
+                  //                         ProductList[index].thumbnail
+                  //
+                  //                         // "assets/images/image Product (6).png",
+                  //                         ),
+                  //                   ),
+                  //
+                  //                   Text(ProductList[index].title
+                  //                       // "name"
+                  //                       // ProductList![index].title
+                  //                       ),
+                  //                   // Container(
+                  //                   //   child: RatingBar.builder(
+                  //                   //       itemSize: 20,
+                  //                   //       itemBuilder: (context, _) => Icon(
+                  //                   //             Icons.star,
+                  //                   //             size: 1,
+                  //                   //             color: Colors.amber,
+                  //                   //           ),
+                  //                   //       onRatingUpdate: (rating) {}),
+                  //                   // ),
+                  //
+                  //                   Text(ProductList[index].price.toString()
+                  //                       //"price"
+                  //                       ),
+                  //                   Text(
+                  //                       "Rating: ${ProductList[index].rating.toString()} "),
+                  //
+                  //                   Text(
+                  //                       "discount: ${ProductList[index].discountPercentage.toString()} % "
+                  //                       //"offer"
+                  //                       ),
+                  //                 ],
+                  //               ),
+                  //             ),
+                  //           );
+                  //         },
+                  //       );
+                  //     }
+                  //     return CircularProgressIndicator();
+                  //   },
+                  // ),
                 ],
               ),
             ),

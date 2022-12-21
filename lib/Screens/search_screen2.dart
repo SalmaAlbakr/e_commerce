@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:e_commerce/thems/colors.dart';
+import 'package:e_commerce/themes/colors.dart';
 
 class Search extends StatelessWidget {
   Search({Key? key}) : super(key: key);
@@ -121,7 +121,7 @@ class Search extends StatelessWidget {
                             child: CircleAvatar(
                               backgroundColor: Colors.white,
                               child: Image.asset(
-                                "assets/images/icon/Tshirt.png",),
+                                "assets/images/icon/T_shirt.png",),
                             ),),
                           SizedBox(
                             height: 5,
@@ -242,7 +242,7 @@ class Search extends StatelessWidget {
                               child: CircleAvatar(
                                 backgroundColor: Colors.white,
                                 child: Image.asset(
-                                    "assets/images/icon/woman tshirt.png"),
+                                    "assets/images/icon/woman t_shirt.png"),
                               )),
                           SizedBox(
                             height: 5,

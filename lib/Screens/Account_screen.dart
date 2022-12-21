@@ -1,5 +1,5 @@
-import 'package:e_commerce/Screens/profile_creen.dart';
-import 'package:e_commerce/thems/colors.dart';
+import 'package:e_commerce/Screens/profile_screen.dart';
+import 'package:e_commerce/themes/colors.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatelessWidget {

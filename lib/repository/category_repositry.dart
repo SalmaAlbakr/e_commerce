@@ -1,8 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:e_commerce/model/categoryProduct.dart';
-import 'package:flutter/material.dart';
-import 'package:e_commerce/model/categoryRepoModel.dart';
-import 'package:e_commerce/thems/colors.dart';
+import 'package:e_commerce/model/category_model.dart';
 
 class CatRepo {
   Future<List<CategoryModel>> getAllCat() async {
@@ -20,8 +17,6 @@ class CatRepo {
     );
     return listOfCat;
   }
-
-
 }
 
 

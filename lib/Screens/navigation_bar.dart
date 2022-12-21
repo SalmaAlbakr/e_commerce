@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:e_commerce/Screens/Account_screen.dart';
-import 'package:e_commerce/Screens/HomeScreen.dart';
+import 'package:e_commerce/Screens/Home_screen.dart';
 import 'package:e_commerce/Screens/cart_screen.dart';
 import 'package:e_commerce/Screens/offer_screen.dart';
 import 'package:e_commerce/Screens/search_screen2.dart';
@@ -14,7 +14,7 @@ class NavigationScreen extends StatefulWidget {
 
 class _NavigationScreenState extends State<NavigationScreen> {
 
-  List screen = [HomeScreen(),Search(), Cart(),Offer(),AccountScreen()];
+  List screen = [HomeScreen(),Search(), CartScreen(),Offer(),AccountScreen()];
   int num = 0;
 
   @override

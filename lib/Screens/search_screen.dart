@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:e_commerce/thems/colors.dart';
+import 'package:e_commerce/themes/colors.dart';
 
-class SearchScreen extends StatelessWidget {
+class SearchScreen extends StatefulWidget {
   SearchScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SearchScreen> createState() => _SearchScreenState();
+}
+
+class _SearchScreenState extends State<SearchScreen> {
   List manIcon = [
     "assets/images/icon/man bag.png",
     "assets/images/icon/man pants.png",
     "assets/images/icon/man shoes.png",
     "assets/images/icon/man underwear.png",
-    "assets/images/icon/Tshirt.png",
-    "assets/images/icon/Tshirt.png",
-    "assets/images/icon/Tshirt.png",
+    "assets/images/icon/T_shirt.png",
+    "assets/images/icon/T_shirt.png",
+    "assets/images/icon/T_shirt.png",
     "assets/images/icon/shirt.png"
   ];
+
   List womenIcon = [
     "assets/images/icon/bikini.png",
     "assets/images/icon/dress.png",
@@ -20,7 +27,7 @@ class SearchScreen extends StatelessWidget {
     "assets/images/icon/woman bag.png",
     "assets/images/icon/woman pants.png",
     "assets/images/icon/woman shoes.png",
-    "assets/images/icon/woman tshirt.png"
+    "assets/images/icon/woman t_shirt.png"
   ];
 
   @override

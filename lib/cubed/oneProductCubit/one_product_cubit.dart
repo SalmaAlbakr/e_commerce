@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:e_commerce/model/onePoduct_model.dart';
-import 'package:e_commerce/repositry/oneProductRepositry.dart';
+import 'package:e_commerce/model/one_product_model.dart';
+import 'package:e_commerce/repository/one_product_repositry.dart';
 import 'package:meta/meta.dart';
 
 part 'one_product_state.dart';

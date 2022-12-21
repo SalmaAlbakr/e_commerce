@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:e_commerce/Screens/Account_screen.dart';
-import 'package:e_commerce/thems/colors.dart';
+import 'package:e_commerce/themes/colors.dart';
 
 class profile extends StatelessWidget {
   const profile({Key? key}) : super(key: key);
@@ -59,7 +58,7 @@ class profile extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 15, fontWeight: FontWeight.bold,),
                       ),
-                      Text("@derlaxy",
+                      Text("@gmail",
                           style: TextStyle(fontSize: 15, color: MyColor.gray)),
                     ],
                   )
@@ -109,7 +108,7 @@ class profile extends StatelessWidget {
               //       Text("Change password" , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.bold),),
               //     ],),
               //     SizedBox(width: 50,),
-              //     // detales
+              //     // details
               //     Column(
               //       crossAxisAlignment: CrossAxisAlignment.end,
               //       children: [

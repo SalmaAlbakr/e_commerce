@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:e_commerce/model/productModel.dart';
+import 'package:e_commerce/model/product_model.dart';
 
 class ProductRepository {
   Future<List<ProductModel>> getAllProduct() async {

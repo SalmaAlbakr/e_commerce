@@ -1,12 +1,8 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:e_commerce/Screens/slider.dart';
 import 'package:e_commerce/cubed/oneProductCubit/one_product_cubit.dart';
-import 'package:e_commerce/model/onePoduct_model.dart';
-import 'package:e_commerce/repositry/oneProductRepositry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:e_commerce/thems/colors.dart';
+import 'package:e_commerce/themes/colors.dart';
 
 class ProductScreen extends StatefulWidget {
   int idNum;

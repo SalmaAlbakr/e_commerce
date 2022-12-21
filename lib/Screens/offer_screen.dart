@@ -34,11 +34,11 @@ class Offer extends StatelessWidget {
               ),
               Container(
                 width: MediaQuery.of(context).size.width,
-                //swidth: 400,
+                //width: 400,
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(10) , color: Colors.blue,),
                 padding: EdgeInsets.all(20),
                 //color: Colors.blue,
-                child: Text("Use “MEGSL” Cupon For \n Get 90%off" , style: TextStyle(color: Colors.white , fontSize: 20 ,),),
+                child: Text("Use “MEGSL” Coupon For \n Get 90%off" , style: TextStyle(color: Colors.white , fontSize: 20 ,),),
               ),
               SizedBox(height: 20,),
               Padding(

@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/Screens/navigation_bar.dart';
 import 'package:e_commerce/Screens/sin_up_screen.dart';
-import 'package:e_commerce/thems/colors.dart';
+import 'package:e_commerce/themes/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -13,9 +13,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController nameControlar = TextEditingController();
-  TextEditingController emailControlar = TextEditingController();
-  TextEditingController paswoodControlar = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey();
   bool rememberMe = false;
 
@@ -71,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     margin: EdgeInsets.all(10),
                     child: TextFormField(
                       textInputAction: TextInputAction.next,
-                      controller: emailControlar,
+                      controller: emailController,
                       // validator بيتحكم بالشروط بتاعتي
                       validator: (String? value) {
                         if (!value!.contains("@")) {
@@ -94,14 +94,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     margin: EdgeInsets.all(10),
                     child: TextFormField(
                       textInputAction: TextInputAction.next,
-                      controller: paswoodControlar,
+                      controller: passwordController,
                       // validator بيتحكم بالشروط بتاعتي
                       // validator: (String? value) {
                       //   if (value!.length < 4 &&
                       //       (!value.contains("@") ||
                       //           !value.contains("#") ||
                       //           !value.contains("*"))) {
-                      //     return "the pasward must have @ or # or *";
+                      //     return "the password must have @ or # or *";
                       //   }
                       //   return null;
                       // },
@@ -144,14 +144,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (rememberMe == true){
-                          RemmemberMe();
+                          RememberMe();
                         }
                         if (formKey.currentState!.validate()) {
                           signIn();
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               backgroundColor: Colors.red,
-                              content: Text("You shoud enter the field")));
+                              content: Text("You should enter the field")));
                         }
                       },
                       child: Text(
@@ -313,10 +313,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void signIn() async {
     try {
-      final response = await Dio()
+       await Dio()
           .post("https://api.escuelajs.co/api/v1/auth/login", data: {
-        "email": emailControlar.text,
-        "password": paswoodControlar.text
+        "email": emailController.text,
+        "password": passwordController.text
       });
       Navigator.pushReplacement(
         context,
@@ -346,7 +346,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
     // print(response);
   }
-  void RemmemberMe() async {
+  void RememberMe() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.setBool("myEmail", rememberMe);
   }

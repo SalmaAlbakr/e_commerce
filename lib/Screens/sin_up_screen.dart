@@ -1,9 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/Screens/login_screen.dart';
-import 'package:e_commerce'
-    '/thems/colors.dart';
-//import '../main.dart';
+import 'package:e_commerce/themes/colors.dart';
 
 class SinUpScreen extends StatefulWidget {
   SinUpScreen({Key? key}) : super(key: key);
