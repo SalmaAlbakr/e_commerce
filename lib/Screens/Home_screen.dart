@@ -1,15 +1,12 @@
 import 'package:e_commerce/Screens/product_screen.dart';
 import 'package:e_commerce/cubed/category_cubit/category_cubit.dart';
 import 'package:e_commerce/cubed/product_cubit/product_cubit.dart';
-import 'package:e_commerce/repository/product_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce/Screens/Category_product-screen.dart';
 import 'package:e_commerce/Screens/login_screen.dart';
-import 'package:e_commerce/model/product_model.dart';
 import 'package:e_commerce/themes/colors.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';

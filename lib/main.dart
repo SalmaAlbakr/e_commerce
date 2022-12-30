@@ -1,4 +1,27 @@
 import 'package:e_commerce/Screens/Category_product-screen.dart';
+import 'package:e_commerce/Screens/activity_notification_screen.dart';
+import 'package:e_commerce/Screens/add_address_screen.dart';
+import 'package:e_commerce/Screens/add_card_screen.dart';
+import 'package:e_commerce/Screens/add_card_screen2.dart';
+import 'package:e_commerce/Screens/add_payment_screen.dart';
+import 'package:e_commerce/Screens/address_screen.dart';
+import 'package:e_commerce/Screens/birthday_screen.dart';
+import 'package:e_commerce/Screens/cart_screen.dart';
+import 'package:e_commerce/Screens/change_name_screen.dart';
+import 'package:e_commerce/Screens/change_password_screen.dart';
+import 'package:e_commerce/Screens/credit_card_&_debit_screen.dart';
+import 'package:e_commerce/Screens/delete_address_confirmation_screen.dart';
+import 'package:e_commerce/Screens/email_screen.dart';
+import 'package:e_commerce/Screens/feed_notification_screen.dart';
+import 'package:e_commerce/Screens/list_category_screen.dart';
+import 'package:e_commerce/Screens/notification_screen.dart';
+import 'package:e_commerce/Screens/offer_notification_screen.dart';
+import 'package:e_commerce/Screens/order_details_screen.dart';
+import 'package:e_commerce/Screens/payment_method_screen.dart';
+import 'package:e_commerce/Screens/review_screen.dart';
+import 'package:e_commerce/Screens/search_result_screen.dart';
+import 'package:e_commerce/Screens/short_by_screen.dart';
+import 'package:e_commerce/Screens/success_sceen.dart';
 import 'package:e_commerce/cubed/cartCubed/cart_cubit.dart';
 import 'package:e_commerce/cubed/categoryProductCubit/category_product_cubit.dart';
 import 'package:e_commerce/cubed/category_cubit/category_cubit.dart';
@@ -15,11 +38,8 @@ import 'package:e_commerce/Screens/product_screen.dart';
 import 'package:e_commerce/Screens/profile_screen.dart';
 import 'package:e_commerce/Screens/search_screen.dart';
 import 'package:e_commerce/Screens/search_screen2.dart';
-import 'package:e_commerce/Screens/slider.dart';
 import 'package:e_commerce/Screens/sin_up_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'Screens/cart_screen.dart';
-import 'Screens/login_screen.dart';
 
 void main() {
   runApp(MultiBlocProvider(
@@ -30,6 +50,6 @@ void main() {
       BlocProvider(create: (context) => CartCubit()),
       BlocProvider(create: (context) => ProductCubit()),
     ],
-    child: MaterialApp(home: HomeScreen()),
+    child: MaterialApp(home: Payment()),
   ));
 }

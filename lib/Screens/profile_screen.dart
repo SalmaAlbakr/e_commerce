@@ -1,3 +1,4 @@
+import 'package:e_commerce/themes/my_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/themes/colors.dart';
 
@@ -7,6 +8,7 @@ class profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: buildAppBar(title: "Profile",buttonAction:  (){}),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -14,22 +16,7 @@ class profile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               // profile
-              Row(
-                children: [
-                  GestureDetector(
-                    onTap: (){
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => const profile()),
-                      // );
-                    },
-                      child: Icon(Icons.arrow_back_ios)),
-                  Text(
-                    "Profile",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                  )
-                ],
-              ),
+
 
               // divider
               Padding(

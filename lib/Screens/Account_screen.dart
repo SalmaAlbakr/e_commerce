@@ -8,37 +8,22 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0.5,
+        backgroundColor: Colors.white,
+        title: Text(
+          "Account",
+          style:
+          TextStyle(fontSize: 20, fontWeight: FontWeight.bold , color: Colors.black),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
-              // title
-              Container(
-                height: 50,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Account",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                  ],
-                ),
-              ),
-
-              // Divider
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Divider(
-                  thickness: 0.5,
-                  color: Colors.grey,
-                ),
-              ),
-
               // profile navigation
               GestureDetector(
                 onTap: () {

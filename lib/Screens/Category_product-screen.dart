@@ -1,4 +1,5 @@
 import 'package:e_commerce/cubed/categoryProductCubit/category_product_cubit.dart';
+import 'package:e_commerce/themes/my_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/themes/colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,27 +19,13 @@ class _CategoryProductScreenState extends State<CategoryProductScreen> {
     super.initState();
     context.read<CategoryProductCubit>().getAllCategoryProduct();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text(
-          "${widget.categoryName} category",
-          style: TextStyle(color: Colors.black),
-        ),
-        elevation: 0,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(Icons.arrow_back_outlined),
-          color: Colors.black,
-        ),
-      ),
-      body:
-        BlocBuilder<CategoryProductCubit , CategoryProductState>
+      appBar: buildAppBar(title: "${widget.categoryName} category" ,buttonAction:  (){Navigator.pop(context);}),
+      body: BlocBuilder<CategoryProductCubit , CategoryProductState>
           (builder: (context, state){
           if (state is CategoryProductSuccesses){
            final categoryList = state.categoryProList;

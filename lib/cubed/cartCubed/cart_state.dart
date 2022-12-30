@@ -7,6 +7,5 @@ class CartInitial extends CartState {}
 
 class CartSuccesses extends CartState {
 final CartTitle cartModel;
-
   CartSuccesses(this.cartModel);
 }
