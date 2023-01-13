@@ -19,7 +19,6 @@ class _LoginScreenState extends State<LoginScreen> {
   GlobalKey<FormState> formKey = GlobalKey();
   bool rememberMe = false;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -95,16 +94,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: TextFormField(
                       textInputAction: TextInputAction.next,
                       controller: passwordController,
-                      // validator بيتحكم بالشروط بتاعتي
-                      // validator: (String? value) {
-                      //   if (value!.length < 4 &&
-                      //       (!value.contains("@") ||
-                      //           !value.contains("#") ||
-                      //           !value.contains("*"))) {
-                      //     return "the password must have @ or # or *";
-                      //   }
-                      //   return null;
-                      // },
                       obscureText: true,
                       decoration: InputDecoration(
                         hintText: "Password",
@@ -143,22 +132,25 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     child: ElevatedButton(
                       onPressed: () {
-                        if (rememberMe == true){
+                        if (rememberMe == true) {
                           RememberMe();
                         }
                         if (formKey.currentState!.validate()) {
                           signIn();
                         } else {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
                               backgroundColor: Colors.red,
-                              content: Text("You should enter the field")));
+                              content: Text("You should enter the field"),
+                            ),
+                          );
                         }
                       },
                       child: Text(
                         "Sign in",
                         style: TextStyle(fontSize: 20),
                       ),
-                      style: ElevatedButton.styleFrom(
+                      style: ElevatedButton.styleFrom(backgroundColor: MyColor.blue,
                           fixedSize: Size.fromWidth(400)),
                     ),
                   ),
@@ -313,39 +305,32 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void signIn() async {
     try {
-       await Dio()
-          .post("https://api.escuelajs.co/api/v1/auth/login", data: {
+      await Dio().post("{{url}}login", data: {
         "email": emailController.text,
-        "password": passwordController.text
+        "password": passwordController.text,
       });
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => NavigationScreen()),
+        MaterialPageRoute(
+          builder: (context) => NavigationScreen(),
+        ),
       );
-
-      // final myAccess = response.data["access_token"];
-      //
-      // final prefs = await SharedPreferences.getInstance();
-      //
-      // await prefs.setString('AccessKey', myAccess);
-
-      // final test = await prefs.get('AccessKey');
-      //
-      // print("my access is : $test");
     }
-    // catch(e){
-    //   print("$e");
-    // }
     on DioError catch (e) {
       print(e.response);
       if (e.response!.statusCode == 400) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
             backgroundColor: Colors.red,
-            content: Text("You should enter the field")));
+            content: Text(
+              "You should enter the field",
+            ),
+          ),
+        );
       }
     }
-    // print(response);
   }
+
   void RememberMe() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     preferences.setBool("myEmail", rememberMe);

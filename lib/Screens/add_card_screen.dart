@@ -9,7 +9,7 @@ class AddCardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: buildAppBar(title: "Add Card" ,buttonAction:  (){}),
+      appBar: buildAppBar(title: "Add Card", buttonAction: () {}),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
@@ -19,17 +19,19 @@ class AddCardScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Card Number", style: TextStyle(
-                      fontWeight: FontWeight.bold
-                  ),),
-                  SizedBox(height: 10,),
+                  Text(
+                    "Card Number",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
                     padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        border: Border.all()
-                    ),
+                    decoration: BoxDecoration(border: Border.all()),
                     child: TextFormField(
-                      decoration: InputDecoration(hintText: "Enter Card Number",
+                      decoration: InputDecoration(
+                          hintText: "Enter Card Number",
                           border: InputBorder.none),
                     ),
                   )
@@ -46,16 +48,17 @@ class AddCardScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Expiration Date", style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
-                        SizedBox(height: 10,),
+                        Text(
+                          "Expiration Date",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
                         Container(
                           padding: EdgeInsets.all(5),
                           width: 170,
-                          decoration: BoxDecoration(
-                              border: Border.all()
-                          ),
+                          decoration: BoxDecoration(border: Border.all()),
                           child: TextFormField(
                             decoration: InputDecoration(
                                 hintText: "Expiration Date",
@@ -70,19 +73,22 @@ class AddCardScreen extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Security Code", style: TextStyle(
-                            fontWeight: FontWeight.bold
-                        ),),
-                        SizedBox(height: 10,),
+                        Text(
+                          "Security Code",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
                         Container(
                           padding: EdgeInsets.all(5),
                           width: 170,
-                          decoration: BoxDecoration(
-                              border: Border.all()
+                          decoration: BoxDecoration(border: Border.all()),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                                hintText: "Security Code",
+                                border: InputBorder.none),
                           ),
-                          child: TextFormField(decoration: InputDecoration(
-                              hintText: "Security Code",
-                              border: InputBorder.none),),
                         )
                       ],
                     ),
@@ -95,23 +101,32 @@ class AddCardScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Card Holder", style: TextStyle(
-                      fontWeight: FontWeight.bold
-                  ),),
-                  SizedBox(height: 10,),
+                  Text(
+                    "Card Holder",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Container(
                     padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        border: Border.all()
+                    decoration: BoxDecoration(border: Border.all()),
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          hintText: "Card Holder", border: InputBorder.none),
                     ),
-                    child: TextFormField(decoration: InputDecoration(
-                        hintText: "Card Holder", border: InputBorder.none),),
                   )
                 ],
               ),
             ),
-            SizedBox(height: 250,),
-            MyButton(title: "Add Card", buttonAction: (){}, textColor: Colors.white, buttonColor: MyColor.blue)
+            SizedBox(
+              height: 250,
+            ),
+            MyButton(
+                title: "Add Card",
+                buttonAction: () {},
+                textColor: Colors.white,
+                buttonColor: MyColor.blue)
           ],
         ),
       ),

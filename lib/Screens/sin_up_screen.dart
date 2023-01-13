@@ -46,11 +46,14 @@ class _SinUpScreenState extends State<SinUpScreen> {
                 ),
 
                 // Let's Get Started text
-                Text("Let's Get Started",
-                    style: TextStyle(
-                        color: MyColor.dark,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20)),
+                Text(
+                  "Let's Get Started",
+                  style: TextStyle(
+                    color: MyColor.dark,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
                 SizedBox(
                   height: 10,
                 ),
@@ -58,7 +61,10 @@ class _SinUpScreenState extends State<SinUpScreen> {
                 //create an new account text
                 Text(
                   "create an new account",
-                  style: TextStyle(color: MyColor.gray, fontSize: 15),
+                  style: TextStyle(
+                    color: MyColor.gray,
+                    fontSize: 15,
+                  ),
                 ),
                 SizedBox(
                   height: 10,
@@ -86,7 +92,6 @@ class _SinUpScreenState extends State<SinUpScreen> {
                     ),
                   ),
                 ),
-
                 // enter email
                 Container(
                   margin: EdgeInsets.all(10),
@@ -115,13 +120,6 @@ class _SinUpScreenState extends State<SinUpScreen> {
                   child: TextFormField(
                     textInputAction: TextInputAction.next,
                     controller: password,
-                    // validator: (String? value) {
-                    //   if (value!.length < 4 ||
-                    //       !(value.contains("@") || value.contains("#"))) {
-                    //     return "enter your password more than 4 character and contain @ or #";
-                    //   }
-                    //   return null;
-                    // },
                     decoration: InputDecoration(
                       hintText: "password",
                       border: OutlineInputBorder(),
@@ -166,22 +164,11 @@ class _SinUpScreenState extends State<SinUpScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                       signIn();
-                      // if (formKey.currentState!.validate()) {
-                      //   ScaffoldMessenger.of(context).showSnackBar(
-                      //     SnackBar(
-                      //       backgroundColor: Colors.blue,
-                      //       content: Text("new account"),
-                      //     ),
-                      //   );
-                      // }
-                      // return null;
                     },
                     child: Text(
                       "Sign up",
                       style: TextStyle(fontSize: 20),
                     ),
-                    //style: TextButton.styleFrom(fixedSize: Size(200, 75))
-                    //ElevatedButton.styleFrom(fixedSize: Size.fromWidth(400)),
                   ),
                 ),
 
@@ -220,25 +207,23 @@ class _SinUpScreenState extends State<SinUpScreen> {
       ),
     );
   }
+
   void signIn() async {
     try {
       final response =
-      await Dio().post("https://api.escuelajs.co/api/v1/users/", data: {
-        "name": firstName.text,
-        "email": email.text,
-        "password": password.text,
-        "avatar": "https://api.lorem.space/image/face?w=640&h=480"
+          await Dio().post("{{url}}register", data: {
+            "name": firstName.text,
+            "phone": "12345678",
+            "email": email.text,
+            "password": password.text,
+            "image": "/9j/"
       });
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(
-            builder: (context) => LoginScreen()),
+        MaterialPageRoute(builder: (context) => LoginScreen()),
       );
       print(response);
     }
-    // catch(e){
-    //   print("$e");
-    // }
     on DioError catch (e) {
       print(e.response);
       if (e.response!.statusCode == 400) {
@@ -247,6 +232,5 @@ class _SinUpScreenState extends State<SinUpScreen> {
             content: Text("You should enter the field")));
       }
     }
-    // print(response);
   }
 }

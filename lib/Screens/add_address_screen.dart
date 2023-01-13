@@ -9,12 +9,12 @@ class addAddress extends StatefulWidget {
 }
 
 class _addAddressState extends State<addAddress> {
-  List<String> itemsList = ["Egypt","UnitedState","korea","turkey"];
+  List<String> itemsList = ["Egypt", "UnitedState", "korea", "turkey"];
   String? selectedItem = "Egypt";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(title: "Add Address ", buttonAction: (){}),
+      appBar: buildAppBar(title: "Add Address ", buttonAction: () {}),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -27,22 +27,24 @@ class _addAddressState extends State<addAddress> {
               ),
               DropdownButton<String>(
                 value: selectedItem,
-                items: itemsList.map((item) => DropdownMenuItem(
-                    value: item,
-                    child: Text(item,style: TextStyle(fontSize: 15)))).toList(),
-                onChanged: (item)=>setState( ()=> selectedItem = item),
+                items: itemsList
+                    .map((item) => DropdownMenuItem(
+                        value: item,
+                        child: Text(item, style: TextStyle(fontSize: 15))))
+                    .toList(),
+                onChanged: (item) => setState(() => selectedItem = item),
               ),
               Text(
                 "First Name",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
               ),
               SizedBox(height: 20),
-
               TextFormField(
                 decoration: InputDecoration(
                   hintText: "",
                   border: OutlineInputBorder(),
-                ),),
+                ),
+              ),
               SizedBox(
                 height: 10,
               ),
@@ -55,7 +57,8 @@ class _addAddressState extends State<addAddress> {
                 decoration: InputDecoration(
                   hintText: "",
                   border: OutlineInputBorder(),
-                ),),
+                ),
+              ),
               SizedBox(
                 height: 10,
               ),
@@ -68,7 +71,8 @@ class _addAddressState extends State<addAddress> {
                 decoration: InputDecoration(
                   hintText: "",
                   border: OutlineInputBorder(),
-                ),),
+                ),
+              ),
               SizedBox(
                 height: 10,
               ),
@@ -81,7 +85,8 @@ class _addAddressState extends State<addAddress> {
                 decoration: InputDecoration(
                   hintText: "",
                   border: OutlineInputBorder(),
-                ),),
+                ),
+              ),
               SizedBox(
                 height: 10,
               ),
@@ -94,7 +99,8 @@ class _addAddressState extends State<addAddress> {
                 decoration: InputDecoration(
                   hintText: "",
                   border: OutlineInputBorder(),
-                ),),
+                ),
+              ),
               SizedBox(
                 height: 10,
               ),
@@ -107,7 +113,8 @@ class _addAddressState extends State<addAddress> {
                 decoration: InputDecoration(
                   hintText: "",
                   border: OutlineInputBorder(),
-                ),),
+                ),
+              ),
               SizedBox(
                 height: 10,
               ),
@@ -120,11 +127,16 @@ class _addAddressState extends State<addAddress> {
                 decoration: InputDecoration(
                   hintText: "",
                   border: OutlineInputBorder(),
-                ),),
+                ),
+              ),
               SizedBox(
                 height: 10,
               ),
-              MyButton(title: "Add Address", buttonAction: (){}, textColor: Colors.white, buttonColor: Colors.blue)
+              MyButton(
+                  title: "Add Address",
+                  buttonAction: () {},
+                  textColor: Colors.white,
+                  buttonColor: Colors.blue)
             ],
           ),
         ),

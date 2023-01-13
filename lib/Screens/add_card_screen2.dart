@@ -12,81 +12,93 @@ class AddCard extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: ListView(
-            //crossAxisAlignment: CrossAxisAlignment.start,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                "Card Number",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              ),
-
-              TextFormField(
-                decoration: InputDecoration(
-                  hintText: "Enter Card Number",
-                  border: OutlineInputBorder(),
-                ),
-              ),
-
               Container(
-                height: 30,
-                width: 30,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                height: 500,
+                child: ListView(
                   children: [
                     Text(
-                      "Expiration Date",
-                      style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      "Card Number",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
                     ),
-                    SizedBox(width: 10),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        hintText: "Enter Card Number",
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+                    Container(
+                      height: 30,
+                      width: 30,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Expiration Date",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                            "Security Code",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                     Text(
-                      "Security Code",
-                      style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      "Card Holder",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    Container(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: 200,
+                            child: TextFormField(
+                              decoration:
+                                  InputDecoration(hintText: "Expiration Date"),
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Container(
+                            width: 200,
+                            child: TextFormField(
+                              decoration: InputDecoration(hintText: "Security Code"),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(hintText: "Enter Card Number"),
+                    ),
+                    SizedBox(
+                      height: 10,
                     ),
                   ],
                 ),
               ),
-
-              Text(
-                "Card Holder",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              ),
-
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 200,
-                      child: TextFormField(
-                        decoration: InputDecoration(hintText: "Expiration Date"),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Container(
-                      width: 200,
-                      child: TextFormField(
-                        decoration: InputDecoration(hintText: "Security Code"),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              TextFormField(
-                decoration: InputDecoration(hintText: "Enter Card Number"),
-              ),
-
-              SizedBox(
-                height: 10,
-              ),
-
               MyButton(
-                  title: "Save",
-                  buttonAction: () {},
-                  textColor: Colors.white,
-                  buttonColor: Colors.blue)
+                title: "Save",
+                buttonAction: () {},
+                textColor: Colors.white,
+                buttonColor: Colors.blue,
+              ),
             ],
           ),
         ),

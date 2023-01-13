@@ -14,11 +14,13 @@ import 'package:e_commerce/Screens/delete_address_confirmation_screen.dart';
 import 'package:e_commerce/Screens/email_screen.dart';
 import 'package:e_commerce/Screens/feed_notification_screen.dart';
 import 'package:e_commerce/Screens/list_category_screen.dart';
+import 'package:e_commerce/Screens/login_screen.dart';
 import 'package:e_commerce/Screens/notification_screen.dart';
 import 'package:e_commerce/Screens/offer_notification_screen.dart';
 import 'package:e_commerce/Screens/order_details_screen.dart';
 import 'package:e_commerce/Screens/payment_method_screen.dart';
 import 'package:e_commerce/Screens/review_screen.dart';
+import 'package:e_commerce/Screens/reviwe_product_screen.dart';
 import 'package:e_commerce/Screens/search_result_screen.dart';
 import 'package:e_commerce/Screens/short_by_screen.dart';
 import 'package:e_commerce/Screens/success_sceen.dart';
@@ -50,6 +52,6 @@ void main() {
       BlocProvider(create: (context) => CartCubit()),
       BlocProvider(create: (context) => ProductCubit()),
     ],
-    child: MaterialApp(home: Payment()),
+    child: MaterialApp(home: AccountScreen()),
   ));
 }

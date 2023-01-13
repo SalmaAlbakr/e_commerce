@@ -1,8 +1,6 @@
 import 'dart:async';
+import 'package:e_commerce/themes/remember_method.dart';
 import 'package:flutter/material.dart';
-import 'package:e_commerce/Screens/login_screen.dart';
-import 'package:e_commerce/Screens/navigation_bar.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -12,24 +10,27 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  void initState(){
+  void initState() {
     super.initState();
-    Timer(Duration(seconds: 5) , () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (BuildContext context) {
-            return RememberScreen();
-          },
-        ),
-      );
-    },);
+    Timer(
+      Duration(seconds: 5),
+      () {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (BuildContext context) {
+              return RememberScreen();
+            },
+          ),
+        );
+      },
+    );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child:
-        Container(
+        child: Container(
           color: Colors.blue,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -43,23 +44,6 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
         ),
       ),
-    );
-  }
-}
-
-class RememberScreen extends StatelessWidget {
-  const RememberScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<SharedPreferences>(
-      future: SharedPreferences.getInstance(),
-      builder: (context, snapshot){
-        var isLogin = snapshot.data?.getBool("myEmail") ?? false;
-        return Scaffold(
-          body: isLogin ? NavigationScreen() : LoginScreen(),
-        );
-      },
     );
   }
 }

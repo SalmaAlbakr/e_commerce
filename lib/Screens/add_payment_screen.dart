@@ -9,7 +9,7 @@ class AddPayment extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: buildAppBar(title: "Payment" ,buttonAction:  (){}),
+      appBar: buildAppBar(title: "Payment", buttonAction: () {}),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView(
@@ -22,8 +22,13 @@ class AddPayment extends StatelessWidget {
                     Icons.credit_card,
                     color: MyColor.blue,
                   ),
-                  SizedBox(width: 20,),
-                  Text("Credit Card Or Debit" , style: TextStyle(fontWeight: FontWeight.bold),)
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    "Credit Card Or Debit",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )
                 ],
               ),
             ),
@@ -35,8 +40,13 @@ class AddPayment extends StatelessWidget {
                     Icons.paypal_outlined,
                     color: MyColor.blue,
                   ),
-                  SizedBox(width: 20,),
-                  Text("PayPal" , style: TextStyle(fontWeight: FontWeight.bold),)
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    "PayPal",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )
                 ],
               ),
             ),
@@ -48,8 +58,13 @@ class AddPayment extends StatelessWidget {
                     Icons.food_bank_outlined,
                     color: MyColor.blue,
                   ),
-                  SizedBox(width: 20,),
-                  Text("Bank Transfer" , style: TextStyle(fontWeight: FontWeight.bold),)
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Text(
+                    "Bank Transfer",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )
                 ],
               ),
             ),

@@ -1,3 +1,5 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:e_commerce/Screens/notification_screen.dart';
 import 'package:e_commerce/Screens/product_screen.dart';
 import 'package:e_commerce/cubed/category_cubit/category_cubit.dart';
 import 'package:e_commerce/cubed/product_cubit/product_cubit.dart';
@@ -6,10 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:e_commerce/Screens/Category_product-screen.dart';
 import 'package:e_commerce/Screens/login_screen.dart';
 import 'package:e_commerce/themes/colors.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key? key}) : super(key: key);
@@ -30,7 +30,6 @@ class _HomeScreenState extends State<HomeScreen> {
     final subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
-      // Got a new connectivity status!
       if (result == ConnectivityResult.none) {
         setState(() {
           isConnection = false;
@@ -42,8 +41,6 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -88,11 +85,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
 
                       // notification
-                      Icon(
+                      IconButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationScreen(),),);
+                      }, icon: Icon(
                         Icons.notifications_none_outlined,
                         color: MyColor.gray,
                         size: 30,
-                      ),
+                      ),),
+
                       IconButton(
                         onPressed: () {
                           setState(
@@ -166,9 +166,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
 
                   // category list
-                  BlocBuilder<CategoryCubit , CategoryState>
-                    (builder: (context, state){
-                    if (state is CategorySuccess){
+                  BlocBuilder<CategoryCubit, CategoryState>(
+                      builder: (context, state) {
+                    if (state is CategorySuccess) {
                       return Container(
                         height: 100,
                         child: ListView.builder(
@@ -183,8 +183,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                     MaterialPageRoute(
                                       builder: (context) =>
                                           CategoryProductScreen(
-                                            categoryName: state.list[item].name
-                                          ),
+                                              categoryName:
+                                                  state.list[item].name),
                                     ),
                                   );
                                 },
@@ -192,7 +192,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   children: [
                                     CircleAvatar(
                                       backgroundImage:
-                                      NetworkImage(state.list[item].image),
+                                          NetworkImage(state.list[item].image),
                                       radius: 30,
                                     ),
                                     SizedBox(
@@ -214,68 +214,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     }
                     return CircularProgressIndicator();
                   }),
-
-                  // FutureBuilder<List<CategoryModel>>(
-                  //   future: CatRepo().getAllCat(),
-                  //   builder: (BuildContext context,
-                  //       AsyncSnapshot<List<CategoryModel>> snapshot) {
-                  //  if (snapshot.connectionState ==
-                  //         ConnectionState.waiting) {
-                  //       return CircularProgressIndicator();
-                  //     } else if (snapshot.connectionState ==
-                  //         ConnectionState.done) {
-                  //    final ListCat = snapshot.data;
-                  //
-                  //    return Container(
-                  //         height: 100,
-                  //         child: ListView.builder(
-                  //           scrollDirection: Axis.horizontal,
-                  //           itemCount: ListCat!.length,
-                  //           itemBuilder: (BuildContext context, int item) {
-                  //             return Padding(
-                  //               padding: const EdgeInsets.all(8.0),
-                  //               child: GestureDetector(
-                  //                 onTap: () {
-                  //                   Navigator.of(context).push(
-                  //                     MaterialPageRoute(
-                  //                       builder: (context) =>
-                  //                           CategoryProductScreen(
-                  //                         categoryName: ListCat[item].name,
-                  //                       ),
-                  //                     ),
-                  //                   );
-                  //                 },
-                  //                 child: Column(
-                  //                   children: [
-                  //                     CircleAvatar(
-                  //                       backgroundImage:
-                  //                           NetworkImage(ListCat[item].image),
-                  //                       radius: 30,
-                  //                     ),
-                  //                     SizedBox(
-                  //                       height: 5,
-                  //                     ),
-                  //                     Text(
-                  //                       "${ListCat[item].name}",
-                  //                       style: TextStyle(
-                  //                         fontWeight: FontWeight.bold,
-                  //                       ),
-                  //                     )
-                  //                   ],
-                  //                 ),
-                  //               ),
-                  //             );
-                  //           },
-                  //         ),
-                  //       );
-                  //     } else if (snapshot.connectionState ==
-                  //         ConnectionState.none) {
-                  //       return Text("data");
-                  //     } else {
-                  //       return CircularProgressIndicator();
-                  //     }
-                  //   },
-                  // ),
 
                   // flash sale text
                   Row(
@@ -462,156 +400,61 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
 
                   // grid product image
-                  BlocBuilder<ProductCubit ,ProductState >
-                    (builder: (context , state){
-                    if (state is ProductSuccesses){
-                    return GridView.builder(
-                      itemCount: state.productList.length,
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      gridDelegate:
-                      SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2),
-                      itemBuilder: (BuildContext context, int index) {
-                        return GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    ProductScreen(idNum: state.productList[index].id,),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            margin: EdgeInsets.all(1),
-                            decoration: BoxDecoration(
-                                border: Border.all(color: MyColor.gray)),
-                            child: Column(
-                              children: [
-                                // product image
-                                Container(
-                                  width: 100,
-                                  height: 100,
-                                  child: Image.network(
-                                      state.productList[index].thumbnail
-
-                                    // "assets/images/image Product (6).png",
+                  BlocBuilder<ProductCubit, ProductState>(
+                      builder: (context, state) {
+                    if (state is ProductSuccesses) {
+                      return GridView.builder(
+                        itemCount: state.productList.length,
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2),
+                        itemBuilder: (BuildContext context, int index) {
+                          return GestureDetector(
+                            onTap: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => ProductScreen(
+                                    idNum: state.productList[index].id,
                                   ),
                                 ),
+                              );
+                            },
+                            child: Container(
+                              margin: EdgeInsets.all(1),
+                              decoration: BoxDecoration(
+                                  border: Border.all(color: MyColor.gray)),
+                              child: Column(
+                                children: [
+                                  // product image
+                                  Container(
+                                    width: 100,
+                                    height: 100,
+                                    child: Image.network(
+                                        state.productList[index].thumbnail),
+                                  ),
 
-                                Text(state.productList[index].title
-                                  // "name"
-                                  // ProductList![index].title
-                                ),
-                                // Container(
-                                //   child: RatingBar.builder(
-                                //       itemSize: 20,
-                                //       itemBuilder: (context, _) => Icon(
-                                //             Icons.star,
-                                //             size: 1,
-                                //             color: Colors.amber,
-                                //           ),
-                                //       onRatingUpdate: (rating) {}),
-                                // ),
+                                  Text(state.productList[index].title),
 
-                                Text(state.productList[index].price.toString()
-                                  //"price"
-                                ),
-                                Text(
-                                    "Rating: ${state.productList[index].rating.toString()} "),
+                                  Text(state.productList[index].price.toString()
+                                      //"price"
+                                      ),
+                                  Text(
+                                      "Rating: ${state.productList[index].rating.toString()} "),
 
-                                Text(
-                                    "discount: ${state.productList[index].discountPercentage.toString()} % "
-                                  //"offer"
-                                ),
-                              ],
+                                  Text(
+                                      "discount: ${state.productList[index].discountPercentage.toString()} % "
+                                      //"offer"
+                                      ),
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                    );}
-                    else return CircularProgressIndicator();
-                  }
-                  ),
-                  // FutureBuilder<List<ProductModel>>(
-                  //   future: ProductRepository().getAllProduct(),
-                  //   builder: (BuildContext context,
-                  //       AsyncSnapshot<List<ProductModel>> snapshot) {
-                  //     final ProductList = snapshot.data;
-                  //
-                  //     if (snapshot.connectionState == ConnectionState.waiting) {
-                  //       return CircularProgressIndicator();
-                  //     }
-                  //     if (snapshot.connectionState == ConnectionState.done) {
-                  //       return GridView.builder(
-                  //         itemCount: ProductList!.length,
-                  //         shrinkWrap: true,
-                  //         physics: NeverScrollableScrollPhysics(),
-                  //         gridDelegate:
-                  //             SliverGridDelegateWithFixedCrossAxisCount(
-                  //                 crossAxisCount: 2),
-                  //         itemBuilder: (BuildContext context, int index) {
-                  //           return GestureDetector(
-                  //             onTap: () {
-                  //               Navigator.of(context).push(
-                  //                 MaterialPageRoute(
-                  //                   builder: (context) =>
-                  //                       ProductScreen(idNum: ProductList[index].id,),
-                  //                 ),
-                  //               );
-                  //             },
-                  //             child: Container(
-                  //               margin: EdgeInsets.all(1),
-                  //               decoration: BoxDecoration(
-                  //                   border: Border.all(color: MyColor.gray)),
-                  //               child: Column(
-                  //                 children: [
-                  //                   // product image
-                  //                   Container(
-                  //                     width: 100,
-                  //                     height: 100,
-                  //                     child: Image.network(
-                  //                         ProductList[index].thumbnail
-                  //
-                  //                         // "assets/images/image Product (6).png",
-                  //                         ),
-                  //                   ),
-                  //
-                  //                   Text(ProductList[index].title
-                  //                       // "name"
-                  //                       // ProductList![index].title
-                  //                       ),
-                  //                   // Container(
-                  //                   //   child: RatingBar.builder(
-                  //                   //       itemSize: 20,
-                  //                   //       itemBuilder: (context, _) => Icon(
-                  //                   //             Icons.star,
-                  //                   //             size: 1,
-                  //                   //             color: Colors.amber,
-                  //                   //           ),
-                  //                   //       onRatingUpdate: (rating) {}),
-                  //                   // ),
-                  //
-                  //                   Text(ProductList[index].price.toString()
-                  //                       //"price"
-                  //                       ),
-                  //                   Text(
-                  //                       "Rating: ${ProductList[index].rating.toString()} "),
-                  //
-                  //                   Text(
-                  //                       "discount: ${ProductList[index].discountPercentage.toString()} % "
-                  //                       //"offer"
-                  //                       ),
-                  //                 ],
-                  //               ),
-                  //             ),
-                  //           );
-                  //         },
-                  //       );
-                  //     }
-                  //     return CircularProgressIndicator();
-                  //   },
-                  // ),
+                          );
+                        },
+                      );
+                    } else
+                      return CircularProgressIndicator();
+                  }),
                 ],
               ),
             ),

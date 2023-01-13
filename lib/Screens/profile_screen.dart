@@ -1,3 +1,9 @@
+import 'package:e_commerce/Screens/birthday_screen.dart';
+import 'package:e_commerce/Screens/change_name_screen.dart';
+import 'package:e_commerce/Screens/change_password_screen.dart';
+import 'package:e_commerce/Screens/email_screen.dart';
+import 'package:e_commerce/Screens/gender_screen.dart';
+import 'package:e_commerce/Screens/phone_number_screen.dart';
 import 'package:e_commerce/themes/my_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:e_commerce/themes/colors.dart';
@@ -15,18 +21,6 @@ class profile extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              // profile
-
-
-              // divider
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Divider(
-                  thickness: 0.5,
-                  color: Colors.grey,
-                ),
-              ),
-
               // image and name
               Row(
                 children: [
@@ -40,10 +34,15 @@ class profile extends StatelessWidget {
                   ),
                   Column(
                     children: [
-                      Text(
-                        "Maximus Gold",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold,),
+                      GestureDetector(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ChangeName()));
+                        },
+                        child: Text(
+                          "Maximus Gold",
+                          style: TextStyle(
+                              fontSize: 15, fontWeight: FontWeight.bold,),
+                        ),
                       ),
                       Text("@gmail",
                           style: TextStyle(fontSize: 15, color: MyColor.gray)),
@@ -54,73 +53,8 @@ class profile extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
-
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     // icon
-              //     Column(
-              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //       children: [
-              //         Icon(
-              //           Icons.man,
-              //           color: MyColor.blue,
-              //         ),
-              //         Icon(
-              //           Icons.calendar_today_outlined,
-              //           color: MyColor.blue,
-              //         ),
-              //         Icon(
-              //           Icons.email_outlined,
-              //           color: MyColor.blue,
-              //         ),
-              //         Icon(
-              //           Icons.phone_android_sharp,
-              //           color: MyColor.blue,
-              //         ),
-              //         Icon(
-              //           Icons.lock_outline,
-              //           color: MyColor.blue,
-              //         ),
-              //       ],
-              //     ),
-              //     // text
-              //     Column(
-              //       crossAxisAlignment: CrossAxisAlignment.start,
-              //       children: [
-              //       Text("Gender" , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.bold),),
-              //       Text("Birthday" , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.bold),),
-              //       Text("Email" , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.bold),),
-              //       Text("Phone Number" , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.bold),),
-              //       Text("Change password" , style: TextStyle(fontSize: 20 , fontWeight: FontWeight.bold),),
-              //     ],),
-              //     SizedBox(width: 50,),
-              //     // details
-              //     Column(
-              //       crossAxisAlignment: CrossAxisAlignment.end,
-              //       children: [
-              //       Text("Male" , style: TextStyle(color: MyColor.gray),),
-              //       Text("30-7-1998" , style: TextStyle(color: MyColor.gray),),
-              //       Text("sal@gmail.com" , style: TextStyle(color: MyColor.gray),),
-              //       Text("01146060481" , style: TextStyle(color: MyColor.gray),),
-              //       Text("************" , style: TextStyle(color: MyColor.gray),),
-              //
-              //
-              //     ],),
-              //     Column(children: [
-              //       Icon(Icons.arrow_forward_ios),
-              //       Icon(Icons.arrow_forward_ios),
-              //       Icon(Icons.arrow_forward_ios),
-              //       Icon(Icons.arrow_forward_ios),
-              //       Icon(Icons.arrow_forward_ios),
-              //
-              //     ],),
-              //   ],
-              // )
-
               // Gender
               Row(
-                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -134,7 +68,7 @@ class profile extends StatelessWidget {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
-                    width: 190,
+                    width: 150,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -143,12 +77,13 @@ class profile extends StatelessWidget {
                       style: TextStyle(color: MyColor.gray),
                     ),
                   ),
-                  Icon(Icons.arrow_forward_ios),
+                  IconButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Genderscreen()));
+                  }, icon: Icon(Icons.arrow_forward_ios),)
                 ],
               ),
               // Birthday
               Row(
-                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -162,7 +97,7 @@ class profile extends StatelessWidget {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
-                    width: 150,
+                    width: 100,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -171,7 +106,9 @@ class profile extends StatelessWidget {
                       style: TextStyle(color: MyColor.gray),
                     ),
                   ),
-                  Icon(Icons.arrow_forward_ios),
+                  IconButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => BirthdayScreen()));
+                  }, icon: Icon(Icons.arrow_forward_ios),)
                 ],
               ),
               // Email
@@ -190,7 +127,7 @@ class profile extends StatelessWidget {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
-                    width: 105,
+                    width: 80,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -199,12 +136,13 @@ class profile extends StatelessWidget {
                       style: TextStyle(color: MyColor.gray),
                     ),
                   ),
-                  Icon(Icons.arrow_forward_ios),
+                  IconButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => EmailScreen()));
+                  }, icon: Icon(Icons.arrow_forward_ios),)
                 ],
               ),
               //phone Number
               Row(
-                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -218,7 +156,7 @@ class profile extends StatelessWidget {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
-                    width: 70,
+                    width: 50,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -227,7 +165,9 @@ class profile extends StatelessWidget {
                       style: TextStyle(color: MyColor.gray),
                     ),
                   ),
-                  Icon(Icons.arrow_forward_ios),
+                  IconButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => PhoneNumber()));
+                  }, icon: Icon(Icons.arrow_forward_ios),)
                 ],
               ),
               // Change Password
@@ -246,7 +186,7 @@ class profile extends StatelessWidget {
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
-                    width: 60,
+                    width: 30,
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -255,7 +195,9 @@ class profile extends StatelessWidget {
                       style: TextStyle(color: MyColor.gray),
                     ),
                   ),
-                  Icon(Icons.arrow_forward_ios),
+                  IconButton(onPressed: (){
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => ChangePasswordScreen()));
+                  }, icon: Icon(Icons.arrow_forward_ios),)
                 ],
               ),
             ],

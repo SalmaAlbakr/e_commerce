@@ -22,7 +22,7 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: buildAppBar(title: "Your Cart",buttonAction:  (){}),
+      appBar: buildAppBar(title: "Your Cart", buttonAction: () {}),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -171,14 +171,21 @@ class _CartScreenState extends State<CartScreen> {
                                 ),
                               ),
                             )),
-                        ElevatedButton(onPressed: () {}, child: Text("Apply") ,style: ButtonStyle(backgroundColor: MaterialStatePropertyAll(MyColor.blue)),)
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text("Apply"),
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStatePropertyAll(MyColor.blue),
+                          ),
+                        )
                       ],
                     ),
                   ),
                   SizedBox(
                     height: 20,
                   ),
-// cheek
+                  // cheek
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
@@ -243,8 +250,11 @@ class _CartScreenState extends State<CartScreen> {
                   ),
 
                   // check button
-                  MyButton(title: "Check Out", buttonAction: (){}, textColor: Colors.white, buttonColor: MyColor.blue)
-
+                  MyButton(
+                      title: "Check Out",
+                      buttonAction: () {},
+                      textColor: Colors.white,
+                      buttonColor: MyColor.blue)
                 ],
               );
             }
