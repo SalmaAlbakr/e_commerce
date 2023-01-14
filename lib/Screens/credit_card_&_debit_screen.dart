@@ -1,3 +1,4 @@
+import 'package:e_commerce/Screens/add_card_screen.dart';
 import 'package:e_commerce/themes/colors.dart';
 import 'package:e_commerce/themes/my_widget.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +36,14 @@ class CreditCardAndDebitScreen extends StatelessWidget {
                 style: ButtonStyle(
                   backgroundColor:  MaterialStatePropertyAll(MyColor.blue),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AddCardScreen(),
+                    ),
+                  );
+                },
                 child: Text(
                   "Add Card",
                   style: TextStyle(color: Colors.white),

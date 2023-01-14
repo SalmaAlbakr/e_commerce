@@ -1,3 +1,4 @@
+import 'package:e_commerce/Screens/add_payment_screen.dart';
 import 'package:e_commerce/Screens/address_screen.dart';
 import 'package:e_commerce/Screens/order_screen.dart';
 import 'package:e_commerce/Screens/profile_screen.dart';
@@ -115,24 +116,34 @@ class AccountScreen extends StatelessWidget {
               ),
 
               // payment navigation
-              Row(
-                children: [
-                  Icon(
-                    Icons.payment_sharp,
-                    color: MyColor.blue,
-                    size: 30,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    "Payment",
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AddPayment(),
                     ),
-                  ),
-                ],
+                  );
+                },
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.payment_sharp,
+                      color: MyColor.blue,
+                      size: 30,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Payment",
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
