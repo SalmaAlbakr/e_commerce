@@ -1,14 +1,14 @@
 import 'package:e_commerce/themes/my_widget.dart';
 import 'package:flutter/material.dart';
 
-class addAddress extends StatefulWidget {
-  const addAddress({Key? key}) : super(key: key);
+class editAddress extends StatefulWidget {
+  const editAddress({Key? key}) : super(key: key);
 
   @override
-  State<addAddress> createState() => _addAddressState();
+  State<editAddress> createState() => _editAddressState();
 }
 
-class _addAddressState extends State<addAddress> {
+class _editAddressState extends State<editAddress> {
   List<String> itemsList = ["Egypt", "UnitedState", "korea", "turkey"];
   String? selectedItem = "Egypt";
   @override

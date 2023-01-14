@@ -27,9 +27,9 @@ AppBar buildAppBar({required String title, required Function buttonAction , Widg
 
 Container MyButton(
     {required String title,
-    required Function buttonAction,
     required Color textColor,
-    required Color buttonColor}) {
+    required Color buttonColor,
+      required void Function()? buttonAction}) {
   return Container(
     width: 500,
     height: 50,
@@ -37,7 +37,7 @@ Container MyButton(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(buttonColor),
       ),
-      onPressed: () => buttonAction,
+      onPressed: buttonAction,
       child: Text(
         title,
         style: TextStyle(color: textColor),

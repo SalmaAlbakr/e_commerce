@@ -1,3 +1,4 @@
+import 'package:e_commerce/Screens/address_screen.dart';
 import 'package:e_commerce/Screens/order_screen.dart';
 import 'package:e_commerce/Screens/profile_screen.dart';
 import 'package:e_commerce/themes/colors.dart';
@@ -83,21 +84,31 @@ class AccountScreen extends StatelessWidget {
               ),
 
               // address navigation
-              Row(
-                children: [
-                  Icon(
-                    Icons.fmd_good_outlined,
-                    color: MyColor.blue,
-                    size: 30,
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Text(
-                    "Address",
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                  ),
-                ],
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AddressScreen(),
+                    ),
+                  );
+                },
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.fmd_good_outlined,
+                      color: MyColor.blue,
+                      size: 30,
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      "Address",
+                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(
                 height: 20,

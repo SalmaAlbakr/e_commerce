@@ -1,3 +1,6 @@
+import 'package:e_commerce/Screens/add_address_screen.dart';
+import 'package:e_commerce/Screens/delete_address_confirmation_screen.dart';
+import 'package:e_commerce/Screens/edit_address_screen.dart';
 import 'package:e_commerce/themes/colors.dart';
 import 'package:e_commerce/themes/my_widget.dart';
 import 'package:flutter/material.dart';
@@ -40,14 +43,28 @@ class AddressScreen extends StatelessWidget {
                           Row(
                             children: [
                               ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => editAddress(),
+                                      ),
+                                    );
+                                  },
                                   child: Text("Edit"),
                                   style: ButtonStyle(
                                     backgroundColor:
                                         MaterialStatePropertyAll(MyColor.blue),
                                   )),
                               IconButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DeleteAddressConfirmationScreen(),
+                                      ),
+                                    );
+                                  },
                                   icon: Icon(
                                     Icons.delete_outline,
                                     color: MyColor.gray,
@@ -64,7 +81,13 @@ class AddressScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: MyButton(
               title: "Add Address",
-              buttonAction: () {},
+              buttonAction: (){
+                Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => addAddress(),
+                ),
+              );},
               textColor: Colors.white,
               buttonColor: MyColor.blue,
             ),
